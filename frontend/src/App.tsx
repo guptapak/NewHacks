@@ -229,6 +229,9 @@ function App() {
             <div className="mt-12 float-right">
               <Button>Export to PDF</Button>
             </div>
+            <div className="mt-12 w-full">
+              <Button>Send Claims to Your Insurance Agents</Button>
+            </div>
           </>
         )}
       </div>
