@@ -25,46 +25,51 @@ interface DisasterItem extends Item {
 
 const sampleItems = [
   {
-    name: "chair",
-    imgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    name: "Chair",
+    imgLink: "/before-chair.png",
   },
   {
-    name: "table",
-    imgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    name: "Desk",
+    imgLink: "/before-desk.png",
   },
   {
-    name: "furniture",
-    imgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    name: "Cabinet",
+    imgLink: "/before-cabinet.png",
+  },
+  {
+    name: "Laptop",
+    imgLink: "/before-computer.png",
+  },
+  {
+    name: "Cup",
+    imgLink: "/before-cup.png",
   },
 ];
 
 const sampleDisasterItems: Array<DisasterItem> = [
   {
-    name: "chair",
-    status: "Good",
-    imgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
-    afterImgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    name: "Chair",
+    status: "Damaged",
+    imgLink: "/before-chair.png",
+    afterImgLink: "/after-chair.png",
   },
   {
-    name: "chair",
-    status: "Good",
-    imgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
-    afterImgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    name: "Cabinet",
+    status: "Damaged",
+    imgLink: "/before-cabinet.png",
+    afterImgLink: "/after-cabinet.png",
   },
   {
-    name: "chair",
+    name: "Desk",
     status: "Good",
-    imgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
-    afterImgLink:
-      "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    imgLink: "/before-desk.png",
+    afterImgLink: "/after-desk.png",
+  },
+  {
+    name: "Computer",
+    status: "Damaged",
+    imgLink: "/before-computer.png",
+    afterImgLink: "/after-computer.png",
   },
 ];
 function App() {
@@ -72,14 +77,14 @@ function App() {
   const handleNormalUpload = (files: File[]) => {
     // do server upload here
     console.log(files);
-    setItems([
-      ...items,
-      {
-        name: "chair",
-        imgLink:
-          "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
-      },
-    ]);
+    // setItems([
+    //   ...items,
+    //   {
+    //     name: "chair",
+    //     imgLink:
+    //       "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    //   },
+    // ]);
     setIsImageUploaded(true);
   };
 
@@ -96,17 +101,17 @@ function App() {
   const handleDisasterUpload = (files: File[]) => {
     // do server upload here
     console.log(files);
-    setDisasterItems([
-      ...disasterItems,
-      {
-        name: "chair",
-        status: "Good",
-        imgLink:
-          "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
-        afterImgLink:
-          "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
-      },
-    ]);
+    // setDisasterItems([
+    //   ...disasterItems,
+    //   {
+    //     name: "chair",
+    //     status: "Good",
+    //     imgLink:
+    //       "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    //     afterImgLink:
+    //       "https://t4.ftcdn.net/jpg/03/21/42/87/360_F_321428779_l8oQrLjoqZM5TIW22IAapbpOg0wgKufw.jpg",
+    //   },
+    // ]);
     setIsDisasterUploaded(true);
   };
   const [disasterItems, setDisasterItems] =
@@ -182,6 +187,7 @@ function App() {
                 <TableRow>
                   <TableHead>Name</TableHead>
                   <TableHead>Image</TableHead>
+                  <TableHead>Before Image</TableHead>
                   <TableHead className="text-right">Action</TableHead>
                 </TableRow>
               </TableHeader>
@@ -190,6 +196,13 @@ function App() {
                   return (
                     <TableRow>
                       <TableCell className="font-medium">{item.name}</TableCell>
+                      <TableCell>
+                        <img
+                          className="w-40 h-40"
+                          src={item.afterImgLink}
+                          alt={item.name}
+                        />
+                      </TableCell>
                       <TableCell>
                         <img
                           className="w-40 h-40"
