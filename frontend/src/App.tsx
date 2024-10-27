@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/table";
 import { Button } from "./components/ui/button";
 import { Trash2 } from "lucide-react";
+// import { PDFViewer } from "@react-pdf/renderer";
+// import { PDFDoc } from "./components/pdf";
 
 interface Item {
   name: string;
@@ -72,6 +74,7 @@ const sampleDisasterItems: Array<DisasterItem> = [
     afterImgLink: "/after-computer.png",
   },
 ];
+
 function App() {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const handleNormalUpload = (files: File[]) => {
@@ -182,7 +185,6 @@ function App() {
           <>
             <h2 className="text-4xl mt-20 mb-20">Items After Disaster</h2>
             <Table>
-              <TableCaption>A list of all items found.</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead>Name</TableHead>
@@ -224,6 +226,9 @@ function App() {
                 })}
               </TableBody>
             </Table>
+            <div className="mt-12 float-right">
+              <Button>Export to PDF</Button>
+            </div>
           </>
         )}
       </div>
